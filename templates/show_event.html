@@ -1,0 +1,10 @@
+{% block container %}
+
+<form method="GET" >
+    {% for doc in docs %}
+    <h2>{{doc.Title}}</h2>
+    <h2>{{doc.Summary}}</h2>
+    {%endfor%}
+</form>
+
+{% endblock %}

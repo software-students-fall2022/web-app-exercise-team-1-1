@@ -33,13 +33,32 @@ def home():
     Route for the home page
     """
     #docs = db.exampleapp.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
-    docs="hello world" #test if the website is working
-    
-    # for testing insertion of doc to database
-    doc = {
-        "name": "member1",
-        "phone": 123456
-    }
-    db.member.insert_one(doc) # insert a member in database
+    docs="Welcome Team 1 Members" #test if the website is working
 
     return render_template('index.html', docs=docs) # render the hone template
+
+@app.route('/create', methods=['POST', 'GET'])
+def create_event():
+
+    if request.method == 'POST':
+        title = request.form['Title']
+        summary = request.form['Summary']
+
+        # create a new document with the data the user entered
+        doc = {
+            "Title": title,
+            "Summary": summary, 
+            "created_at": datetime.datetime.utcnow()
+        }
+        db.eventtest.insert_one(doc) # insert a new document
+
+    return render_template('create_new_event.html')
+
+@app.route('/show', methods=['POST', 'GET'])
+def show_event():
+    if request.method == 'GET':
+        list = db.eventtest.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
+    
+
+    return render_template('show_event.html',docs=list)     
+

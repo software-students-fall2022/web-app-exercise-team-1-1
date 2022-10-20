@@ -1,0 +1,15 @@
+<!-- form used to create a new post -->
+
+<h2>Create an Event</h2>
+<form method="POST" action="{{ url_for('create_event') }}">
+  <p>Event Title: <input type="text" id="Title" name="Title" /><br /></p>
+  <p>
+    Event Summary:
+    <textarea type="text" id="Summary" name="Summary"></textarea>
+  </p>
+  <p>
+    <input type="reset" value="Reset" />
+    <input type="submit" name="post-btn" value="Create" />
+  </p>
+  <a href="{{ url_for('show_event')}}">Show created Event</a>
+</form>
