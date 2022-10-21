@@ -63,10 +63,46 @@ def show_event():
     return render_template('show_event.html',docs=docs)  
 
 @app.route('/deleteEvent/<event_id>')
-def delete(event_id):
+def delete_event(event_id):
     """
     Route for GET requests to the delete page.
     Deletes the specified record from the database, and then redirects the browser to the home page.
     """
     db.event.delete_one({"_id": ObjectId(event_id)})
     return redirect(url_for('show_event')) # tell the web browser to make a request for the / route (the home function)
+
+
+# route to view the edit form for an existing post
+@app.route('/edit/<event_id>')
+def edit_Event_Page(event_id):
+    """
+    Route for GET requests to the edit page.
+    Displays a form users can fill out to edit an existing record.
+    """
+    doc = db.event.find_one({"_id": ObjectId(event_id)})
+    return render_template('edit_event.html', doc=doc) # render the edit template
+
+# route to accept the form submission to delete an existing post
+@app.route('/edit/<event_id>', methods=['POST', 'GET'])
+def edit_event(event_id):
+    """
+    Route for POST requests to the edit page.
+    Accepts the form submission data for the specified document and updates the document in the database.
+    """
+    if request.method == 'POST':
+        title = request.form['Title']
+        summary = request.form['Summary']
+
+            # create a new document with the data the user entered
+        doc = {
+            "Title": title,
+            "Summary": summary, 
+            "created_at": datetime.datetime.utcnow()
+        }
+
+        db.event.update_one(
+            {"_id": ObjectId(event_id)}, # match criteria
+            { "$set": doc }
+        )
+
+    return redirect(url_for('show_event')) # tell the browser to make a request for the / route (the home function)
