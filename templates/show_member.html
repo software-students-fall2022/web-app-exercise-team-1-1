@@ -1,0 +1,14 @@
+{% block container %}
+
+<form method="GET" >
+    {% for doc in docs %}
+    <h2>{{doc.Name}}</h2>
+    <h2>{{doc.ContactInfo}}</h2>
+
+
+</form>
+<a href="{{ url_for('edit_member', member_id=doc._id)}}">Edit</a>
+{%endfor%}
+<a href="{{ url_for('create_member')}}">Add New Member</a>
+<a href="{{ url_for('home')}}">HomePage</a>
+{% endblock %}

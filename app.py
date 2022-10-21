@@ -105,6 +105,7 @@ def edit_event(event_id):
             { "$set": doc }
         )
 
+
     return redirect(url_for('show_event'))
      # tell the browser to make a request for the / route (the home function)
 
@@ -162,3 +163,5 @@ def edit_member(member_id):
         )
 
         return redirect(url_for('home'))
+
+

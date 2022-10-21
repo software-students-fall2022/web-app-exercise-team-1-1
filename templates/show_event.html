@@ -1,0 +1,13 @@
+{% block container %}
+
+<form method="GET" >
+    {% for doc in docs %}
+    <h2>{{doc.Title}}</h2>
+    <h2>{{doc.Summary}}</h2>
+
+</form>
+<a href="{{ url_for('delete_event', event_id=doc._id)}}">Delete</a>
+{%endfor%}
+<a href="{{ url_for('create_event')}}">Add New Event</a>
+<a href="{{ url_for('home')}}">HomePage</a>
+{% endblock %}
