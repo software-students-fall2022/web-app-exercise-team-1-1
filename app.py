@@ -105,4 +105,63 @@ def edit_event(event_id):
             { "$set": doc }
         )
 
-    return redirect(url_for('show_event')) # tell the browser to make a request for the / route (the home function)
+
+    return redirect(url_for('show_event'))
+     # tell the browser to make a request for the / route (the home function)
+
+@app.route('/createMember', methods=['POST', 'GET'])
+def create_member():
+
+    if request.method == 'POST':
+        Name = request.form['Name']
+        ContactInfo = request.form['ContactInfo']
+
+        # create a new document with the data the user entered
+        doc = {
+            "Name": Name,
+            "ContactInfo": ContactInfo, 
+            "created_at": datetime.datetime.utcnow()
+        }
+        db.membertest.insert_one(doc) # insert a new document
+
+    return render_template('create_new_member.html') 
+
+@app.route('/showMember', methods=['POST', 'GET'])
+def show_member():
+    if request.method == 'GET':
+        list = db.membertest.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
+    
+
+    return render_template('show_member.html',docs=list)  
+
+#@app.route('/editMember/<member_id>')
+def edit(member_id):
+    #if request.method == 'GET':
+        #list = db.membertest.find({}).sort("created_at", -1)
+    doc = db.membertest.find_one({"_id": ObjectId(member_id)})
+    
+    return render_template('editMember.html', doc=doc) # render the edit template
+
+
+# route to accept the form submission to delete an existing post
+@app.route('/editMember/<member_id>', methods=['POST'])
+def edit_member(member_id):
+    if request.method == 'POST':
+        Name = request.form['Name']
+        ContactInfo = request.form['ContactInfo']
+
+        doc = {
+            # "_id": ObjectId(post_id), 
+            "Name": Name, 
+            "ContactInfo": ContactInfo, 
+            "created_at": datetime.datetime.utcnow()
+        }
+
+        db.membertest.update_one(
+            {"_id": ObjectId(member_id)}, # match criteria
+            { "$set": doc }
+        )
+
+        return redirect(url_for('home'))
+
+
