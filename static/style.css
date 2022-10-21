@@ -1,7 +1,259 @@
-header {
-    display: flex;
-    flex-direction: row;
-    gap: 10em; /* space between elements in the row */
-    justify-content: space-between; /* align along the flex direction */
-    align-items: center; /* align across the flex direction */
-  }
+body {
+  font-family: helvetica;
+  display: flex;
+  flex-direction: column;
+  gap: 5em; /* space between elements in the row */
+  justify-content: center; /* align along the flex direction */
+  align-items: center; /* align across the flex direction */
+}
+
+#page_title {
+  font-family: helvetica;
+  margin-top: 20px;
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: rgb(229, 229, 229);
+  color: black;
+  border-radius: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  flex-direction: row;
+}
+
+.post_title {
+  margin-top: 7px;
+  margin-bottom: 20px;
+}
+
+.post {
+  background-color: rgb(229, 229, 229);
+  border-radius: 20px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.10);
+  padding: 20px;
+  width: 500px;
+  text-align: center;
+}
+
+.text_field {
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 15px;
+  margin: 10px;
+}
+
+.form_text {
+  background-color: rgb(236, 236, 236);
+  font-weight: 300;
+  line-height: 1.5em;
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 30px;
+  margin-top: 10px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.10);
+}
+
+.center{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post_description {
+  background-color: rgb(236, 236, 236);
+  font-weight: 300;
+  line-height: 1.5em;
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 30px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.10);
+  text-align: left;
+}
+
+
+/* BLUE BUTTON: */
+.blue_button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(114, 114, 255);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.blue_button:hover {background-color: rgb(83, 83, 185)}
+
+.blue_button:active {
+  background-color: rgb(83, 83, 185);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+/* GREEN BUTTON: */
+.green_button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(92, 215, 92);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.green_button:hover {background-color: rgb(67, 157, 67)}
+
+.green_button:active {
+  background-color: rgb(67, 157, 67);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+/* RED BUTTON: */
+.red_button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(255, 114, 114);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.red_button:hover {background-color: rgb(186, 83, 83)}
+
+.red_button:active {
+  background-color: rgb(186, 83, 83);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+/* DELETE BUTTON:  */
+.delete_button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(255, 114, 114);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.delete_button:hover {background-color: rgb(186, 83, 83)}
+
+.delete_button:active {
+  background-color: rgb(186, 83, 83);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+/* EDIT BUTTON:  */
+.edit_button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 219, 73);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.edit_button:hover {background-color: rgb(199, 170, 55)}
+
+.edit_button:active {
+  background-color: rgb(199, 170, 55);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+/* CREATE BUTTON:  */
+.home_button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(114, 114, 255);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.home_button:hover {background-color: rgb(83, 83, 185)}
+
+.home_button:active {
+  background-color: rgb(83, 83, 185);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+/* HOME BUTTON:  */
+.create_button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: rgb(92, 215, 92);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.create_button:hover {background-color: rgb(67, 157, 67)}
+
+.create_button:active {
+  background-color: rgb(67, 157, 67);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
