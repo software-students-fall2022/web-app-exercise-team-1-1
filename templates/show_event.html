@@ -3,7 +3,7 @@
 <form method="GET" >
     {% for doc in docs %}
     <h2>{{doc.Title}}</h2>
-    <h2>{{doc.Summary}}</h2>
+    <p>{{doc.Summary}}</p>
 
 </form>
 <a href="{{ url_for('edit_event', event_id=doc._id)}}">Edit</a>
