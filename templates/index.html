@@ -1,10 +1,14 @@
 
-
+<!DOCTYPE html>
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 {% block container %}
-
-    
-
+<header>
     <h2>{{docs}}</h2>
-    
-
+    <a href="{{ url_for('show_member')}}">Member</a>
+    <a href="{{ url_for('show_event')}}">Event</a>
+</header>
 {% endblock %}
+</html>

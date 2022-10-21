@@ -1,0 +1,15 @@
+<!-- form used to create a new post -->
+
+<h2>Create a member profile</h2>
+<form method="POST" action="{{ url_for('create_member') }}">
+  <p>Name:  <input type="text" id="Name" name="Name" /><br /></p>
+  <p>
+    Contact Information:
+    <textarea type="text" id="ContactInfo" name="ContactInfo"></textarea>
+  </p>
+  <p>
+    <input type="reset" value="Reset" />
+    <input type="submit" name="post-btn" value="Create" />
+  </p>
+  <a href="{{ url_for('show_member')}}">Return</a>
+</form>

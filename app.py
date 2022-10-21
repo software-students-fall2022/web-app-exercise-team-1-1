@@ -105,6 +105,7 @@ def edit_event(event_id):
             { "$set": doc }
         )
 
+
     return redirect(url_for('show_event'))
      # tell the browser to make a request for the / route (the home function)
 
@@ -161,4 +162,13 @@ def edit_member(member_id):
             { "$set": doc }
         )
 
-        return redirect(url_for('home'))
+        #return render_template('editMember.html', doc=doc) 
+        return redirect(url_for('show_member'))
+
+
+@app.route('/deleteMember/<member_id>')
+def delete_member(member_id):
+
+    db.membertest.delete_one({"_id": ObjectId(member_id)})
+    return redirect(url_for('show_member'))
+
