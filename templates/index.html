@@ -7,7 +7,7 @@
 {% block container %}
 <header>
     <h2>{{docs}}</h2>
-    
+    <a href="{{ url_for('show_member')}}">Member</a>
     <a href="{{ url_for('show_event')}}">Event</a>
 </header>
 {% endblock %}
