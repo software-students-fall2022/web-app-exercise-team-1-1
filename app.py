@@ -15,7 +15,7 @@ config = dotenv_values(".env")
     # turn on debugging, if in development
     #app.debug = True # debug mnode
 # connect to the database
-cxn = pymongo.MongoClient(config['MONGO_URI'], username='admin', password='secret') #need to include username and password to insert doc to database
+cxn = pymongo.MongoClient(config['MONGO_URI']) #need to include username and password to insert doc to database
 try:
     # verify the connection works by pinging the database
     cxn.admin.command('ping') # The ping command is cheap and does not require auth.
@@ -91,7 +91,7 @@ def edit_event(event_id):
         doc = {
             "Title": title,
             "Summary": summary, 
-            "created_at": datetime.datetime.utcnow()
+            "Created_at": datetime.datetime.utcnow()
         }
 
         db.event.update_one(
@@ -166,3 +166,74 @@ def delete_member(member_id):
     db.membertest.delete_one({"_id": ObjectId(member_id)})
     return redirect(url_for('show_member'))
 
+@app.route('/createPost', methods=['POST', 'GET'])
+def create_post():
+
+    if request.method == 'POST':
+        title = request.form['title']
+        theme = request.form['theme']
+        date_location = request.form['date_location']
+        summary = request.form['summary']
+
+
+        # create a new document with the data the user entered
+        doc = {
+            "title": title,
+            "theme": theme, 
+            "created_at": datetime.datetime.utcnow(),
+            "date_location": date_location, 
+            "summary": summary
+        }
+        db.post.insert_one(doc) # insert a new document
+
+    return render_template('create_new_post.html')
+
+@app.route('/showPost', methods=['POST', 'GET'])
+def show_post():
+    if request.method == 'GET':
+        docs = db.post.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
+    
+    return render_template('show_post.html',docs=docs)  
+
+@app.route('/deletePost/<post_id>')
+def delete_post(post_id):
+    """
+    Route for GET requests to the delete page.
+    Deletes the specified record from the database, and then redirects the browser to the home page.
+    """
+    db.post.delete_one({"_id": ObjectId(post_id)})
+    return redirect(url_for('show_post')) # tell the web browser to make a request for the / route (the home function)
+
+@app.route('/editPost/<post_id>')
+def edit3(post_id):
+    #if request.method == 'GET':
+        #list = db.membertest.find({}).sort("created_at", -1)
+    doc = db.post.find_one({"_id": ObjectId(post_id)})
+    
+    return render_template('edit_post.html', doc=doc) # render the edit template
+
+# route to accept the form submission to delete an existing post
+@app.route('/editPost/<post_id>', methods=['POST'])
+def edit_post(post_id):
+    if request.method == 'POST':
+        title = request.form['title']
+        summary = request.form['summary']
+        theme = request.form['theme']
+        date_location = request.form['date_location']
+
+            # create a new document with the data the user entered
+        doc = {
+            "title": title,
+            "summary": summary, 
+            "theme": theme,
+            "date_location": date_location,
+            "Created_at": datetime.datetime.utcnow()
+        }
+
+        db.post.update_one(
+            {"_id": ObjectId(post_id)}, # match criteria
+            { "$set": doc }
+        )
+
+        #return render_template('editMember.html', doc=doc) 
+        return redirect(url_for('show_post'))
