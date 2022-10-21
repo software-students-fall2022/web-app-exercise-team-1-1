@@ -37,7 +37,7 @@ def home():
 
     return render_template('index.html', docs=docs) # render the hone template
 
-@app.route('/create', methods=['POST', 'GET'])
+@app.route('/createEvent', methods=['POST', 'GET'])
 def create_event():
 
     if request.method == 'POST':
@@ -50,15 +50,23 @@ def create_event():
             "Summary": summary, 
             "created_at": datetime.datetime.utcnow()
         }
-        db.eventtest.insert_one(doc) # insert a new document
+        db.event.insert_one(doc) # insert a new document
 
     return render_template('create_new_event.html')
 
-@app.route('/show', methods=['POST', 'GET'])
+@app.route('/showEvent', methods=['POST', 'GET'])
 def show_event():
     if request.method == 'GET':
-        list = db.eventtest.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
+        docs = db.event.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
     
 
-    return render_template('show_event.html',docs=list)     
+    return render_template('show_event.html',docs=docs)  
 
+@app.route('/deleteEvent/<event_id>')
+def delete(event_id):
+    """
+    Route for GET requests to the delete page.
+    Deletes the specified record from the database, and then redirects the browser to the home page.
+    """
+    db.event.delete_one({"_id": ObjectId(event_id)})
+    return redirect(url_for('show_event')) # tell the web browser to make a request for the / route (the home function)

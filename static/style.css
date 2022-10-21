@@ -1,0 +1,7 @@
+header {
+    display: flex;
+    flex-direction: row;
+    gap: 10em; /* space between elements in the row */
+    justify-content: space-between; /* align along the flex direction */
+    align-items: center; /* align across the flex direction */
+  }
