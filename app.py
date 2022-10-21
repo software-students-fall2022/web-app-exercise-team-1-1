@@ -71,24 +71,18 @@ def delete_event(event_id):
     db.event.delete_one({"_id": ObjectId(event_id)})
     return redirect(url_for('show_event')) # tell the web browser to make a request for the / route (the home function)
 
-
-# route to view the edit form for an existing post
-@app.route('/edit/<event_id>')
-def edit_Event_Page(event_id):
-    """
-    Route for GET requests to the edit page.
-    Displays a form users can fill out to edit an existing record.
-    """
+@app.route('/editEvent/<event_id>')
+def edit2(event_id):
+    #if request.method == 'GET':
+        #list = db.membertest.find({}).sort("created_at", -1)
     doc = db.event.find_one({"_id": ObjectId(event_id)})
+    
     return render_template('edit_event.html', doc=doc) # render the edit template
 
+
 # route to accept the form submission to delete an existing post
-@app.route('/edit/<event_id>', methods=['POST', 'GET'])
+@app.route('/editEvent/<event_id>', methods=['POST'])
 def edit_event(event_id):
-    """
-    Route for POST requests to the edit page.
-    Accepts the form submission data for the specified document and updates the document in the database.
-    """
     if request.method == 'POST':
         title = request.form['Title']
         summary = request.form['Summary']
@@ -105,9 +99,9 @@ def edit_event(event_id):
             { "$set": doc }
         )
 
+        #return render_template('editMember.html', doc=doc) 
+        return redirect(url_for('show_event'))
 
-    return redirect(url_for('show_event'))
-     # tell the browser to make a request for the / route (the home function)
 
 @app.route('/createMember', methods=['POST', 'GET'])
 def create_member():
