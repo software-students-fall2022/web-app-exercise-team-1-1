@@ -108,7 +108,7 @@ def edit_event(event_id):
     return redirect(url_for('show_event'))
      # tell the browser to make a request for the / route (the home function)
 
-     @app.route('/createMember', methods=['POST', 'GET'])
+@app.route('/createMember', methods=['POST', 'GET'])
 def create_member():
 
     if request.method == 'POST':
