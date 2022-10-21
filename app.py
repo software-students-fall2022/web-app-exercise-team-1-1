@@ -133,7 +133,7 @@ def show_member():
 
     return render_template('show_member.html',docs=list)  
 
-#@app.route('/editMember/<member_id>')
+@app.route('/editMember/<member_id>')
 def edit(member_id):
     #if request.method == 'GET':
         #list = db.membertest.find({}).sort("created_at", -1)
