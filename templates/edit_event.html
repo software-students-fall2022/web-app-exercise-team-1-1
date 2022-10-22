@@ -1,14 +1,22 @@
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
 {% block container %}
 
-<h2>Edit Event</h2>
-<form method="POST" action="{{ url_for('edit_event', event_id=doc._id) }}">
-    <h4>Title</h4>
-    <input type="text" id="Title" name="Title" value="{{doc.Title}}" placeholder="Title"/>
-    <br />
-    <h4>Summary</h4>
-    <textarea id="Summary" name="Summary" placeholder="Summary">{{doc.Summary}}</textarea>
-    <br />
-    <input type="submit" value="Save" />
-</form>
-<a href="{{ url_for('show_event')}}">Cancel</a>
+<header>
+    <div id="page_title">
+        <h2>Edit event</h2>
+    </div>
+</header>
+
+<div class="post">
+    <form method="POST" action="{{ url_for('edit_event', event_id=doc._id) }}">
+        <p class="form_text">Title<input class="text_field" type="text" id="Title" name="Title" value="{{doc.Title}}" placeholder="Title"/><br/></p form_text>
+        <p class="form_text center">Summary<textarea class="text_field" id="Summary" name="Summary" placeholder="Summary">{{doc.Summary}}</textarea><br/></p form_text>
+        <input class="create_button" type="submit" value="Save" />
+    </form>
+</div>
+<a class="home_button" href="{{ url_for('show_event')}}">Cancel</a>
 {% endblock %}

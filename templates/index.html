@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <link
       rel="stylesheet"
@@ -6,10 +5,19 @@
     />
 {% block container %}
 <header>
-    <h2>{{docs}}</h2>
-    <a href="{{ url_for('show_member')}}">Member</a>
-    <a href="{{ url_for('show_event')}}">Event</a>
-    <a href="{{ url_for('show_post')}}">Post</a>
+    <div id="page_title">
+        <h2>{{docs}}</h2>
+    </div>
 </header>
+
+<body>
+    <a class="blue_button" href="{{ url_for('show_event')}}">Events</a>
+
+    <a class="green_button" href="{{ url_for('show_member')}}">Members</a>
+
+    <a class="red_button" href="{{ url_for('show_post')}}">Posts</a>
+
+    <br>
+</body>
 {% endblock %}
 </html>

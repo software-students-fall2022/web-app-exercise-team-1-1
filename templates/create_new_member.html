@@ -1,15 +1,22 @@
-<!-- form used to create a new post -->
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 
-<h2>Create a member profile</h2>
-<form method="POST" action="{{ url_for('create_member') }}">
-  <p>Name:  <input type="text" id="Name" name="Name" /><br /></p>
-  <p>
-    Contact Information:
-    <textarea type="text" id="ContactInfo" name="ContactInfo"></textarea>
-  </p>
-  <p>
-    <input type="reset" value="Reset" />
-    <input type="submit" name="post-btn" value="Create" />
-  </p>
-  <a href="{{ url_for('show_member')}}">Return</a>
-</form>
+<header>
+  <div id="page_title">
+      <h2>Add a member</h2>
+  </div>
+</header>
+
+<div class="post">
+  <form method="POST" action="{{ url_for('create_member') }}">
+    <p class="form_text">Name:<input class="text_field" type="text" id="Name" name="Name" /><br/></p>
+    <p class="form_text center">Contact Information:<textarea class="text_field" type="text" id="ContactInfo" name="ContactInfo"></textarea></p>
+    <p>
+      <input class="delete_button" type="reset" value="Reset" />
+      <input class="create_button" type="submit" name="post-btn" value="Create" />
+    </p>
+  </form>
+</div>
+<a class="home_button" href="{{ url_for('show_member')}}">Return</a>
