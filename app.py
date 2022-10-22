@@ -15,7 +15,7 @@ config = dotenv_values(".env")
     # turn on debugging, if in development
     #app.debug = True # debug mnode
 # connect to the database
-cxn = pymongo.MongoClient(config['MONGO_URI']) #need to include username and password to insert doc to database
+cxn = pymongo.MongoClient(config['MONGO_URI'], username='admin', password ='secret') #need to include username and password to insert doc to database
 try:
     # verify the connection works by pinging the database
     cxn.admin.command('ping') # The ping command is cheap and does not require auth.
