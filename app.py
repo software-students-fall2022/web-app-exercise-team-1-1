@@ -58,7 +58,8 @@ def create_event():
 def show_event():
     if request.method == 'GET':
         docs = db.event.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
-    
+    else:
+        docs = db.event.find({'Title':request.form['search'],}).sort("created_at", -1)
 
     return render_template('show_event.html',docs=docs)  
 
@@ -192,7 +193,8 @@ def create_post():
 def show_post():
     if request.method == 'GET':
         docs = db.post.find({}).sort("created_at", -1) # sort in descending order of created_at timestamp
-    
+    else:
+        docs = db.post.find({'theme':request.form['search'],}).sort("created_at", -1)
     return render_template('show_post.html',docs=docs)  
 
 @app.route('/deletePost/<post_id>')
