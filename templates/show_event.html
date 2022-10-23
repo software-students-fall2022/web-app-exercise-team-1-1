@@ -11,6 +11,10 @@
 </header>
 
 <body>
+    <form method="POST" >
+        <input class="text_field" type="text" id="search" name="search" />
+        <input class="create_button" type="submit" name="post-btn" value="Search" />
+    </form>
     <form method="GET" >
         {% for doc in docs %}
         <div class="post">
@@ -26,6 +30,7 @@
 
 {%endfor%}
 <div class="row">
+    <a class="home_button" href="{{ url_for('show_event')}}">Return to Event List</a>
     <a class="create_button" href="{{ url_for('create_event')}}">Create New Event</a>
     <a class="home_button" href="{{ url_for('home')}}">Home Page</a>
 </div>
