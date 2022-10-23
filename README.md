@@ -5,7 +5,7 @@ A little exercise to build a web application following an agile development proc
 
 ## Product vision statement
 
-This application is designed for club e-board members to manage their club by organizing events, checking their members' participation, communicating with other e-board members, and connecting with other clubs.
+This application is designed for club e-board members to manage their club by organizing events, checking their members' participation, and connecting with other clubs.
 
 ## User stories
 
