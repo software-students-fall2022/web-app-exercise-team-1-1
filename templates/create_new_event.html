@@ -1,0 +1,22 @@
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+<header>
+  <div id="page_title">
+      <h2>Create an event</h2>
+  </div>
+</header>
+
+<div class="post">
+  <form method="POST" action="{{ url_for('create_event') }}">
+    <p class="form_text">Event Title: <input class="text_field" type="text" id="Title" name="Title"/><br/></p>
+    <p class="form_text center">Event Summary:<textarea class="text_field" type="text" id="Summary" name="Summary"></textarea></p>
+    <p>
+      <input class="delete_button" type="reset" value="Reset" />
+      <input class="create_button" type="submit" name="post-btn" value="Create" />
+    </p>
+  </form>
+</div>
+<a class="home_button" href="{{ url_for('show_event')}}">Return</a>

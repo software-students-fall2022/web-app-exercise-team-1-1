@@ -1,0 +1,29 @@
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+{% block container %}
+
+<header>
+    <div id="page_title">
+        <h2>Edit event</h2>
+    </div>
+</header>
+
+<div class="post">
+    <form method="POST" action="{{ url_for('edit_post', post_id=doc._id) }}">
+        <p class="form_text">Title</p>
+        <input class="text_field" type="text" id="title" name="title" value="{{doc.title}}" placeholder="title"/><br/>
+        <p class="form_text">Theme</p>
+        <input class="text_field" type="text" id="theme" name="theme" value="{{doc.theme}}" placeholder="theme"/>
+        <p class="form_text">Date & Location</p>
+        <input class="text_field" type="text" id="date_location" name="date_location" value="{{doc.date_location}}" placeholder="date_location"/><br/>
+        <p class="form_text center">Summary</p>
+        <textarea  class="text_field" id="summary" name="summary" placeholder="summary">{{doc.summary}}</textarea><br/>
+        <input class="create_button" type="submit" name="post-btn" value="Save" />
+    </form>
+</div>
+<a class="home_button" href="{{ url_for('show_post')}}">Cancel</a>
+<br>
+{% endblock %}

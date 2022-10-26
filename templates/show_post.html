@@ -1,0 +1,36 @@
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+{% block container %}
+
+<header>
+    <div id="page_title">
+        <h2>Posts</h2>
+    </div>
+</header>
+<form method="POST" >
+    <input class="text_field" type="text" id="search" name="search" />
+    <input class="create_button" type="submit" name="post-btn" value="Search" />
+</form>
+<form method="GET" >
+    {% for doc in docs %}
+    <div class="post">
+        <h2 class="post_title">{{doc.title}}</h2>
+        <h4 class="post_title">{{doc.theme}}</h4>
+        <h4 class="post_title">{{doc.date_location}}</h4>
+        <div class="post_description">
+            <p>{{doc.summary}}</p>
+        </div>
+        <a class="delete_button" href="{{ url_for('delete_post', post_id=doc._id)}}">Delete</a>
+        <a class="edit_button" href="{{ url_for('edit_post', post_id=doc._id)}}">Edit</a>
+    </div>
+</form>
+{%endfor%}
+<div class="row">
+    <a class="home_button" href="{{ url_for('show_post')}}">Return to Post</a>
+    <a class="create_button" href="{{ url_for('create_post')}}">Create New Post</a>
+    <a class="home_button" href="{{ url_for('home')}}">Home Page</a>
+</div>
+<br>
+{% endblock %}

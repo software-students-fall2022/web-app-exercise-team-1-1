@@ -1,0 +1,24 @@
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+{% block container %}
+
+<header>
+    <div id="page_title">
+        <h2>Edit member</h2>
+    </div>
+</header>
+
+<div class="post">
+    <form method="POST" action="{{ url_for('edit_member', member_id=doc._id) }}">
+        <p class="form_text">Member Name<input class="text_field" type="text" id="Name" name="Name" value="{{doc.Name}}" placeholder="Your name"/><br/></p form_text>
+        <p class="form_text center">Contact Information<textarea class="text_field" id="ContactInfo" name="ContactInfo" placeholder="ContactInfo">{{doc.ContactInfo}}</textarea><br/></p form_text>
+        <input class="create_button" type="submit" value="Save" />
+    </form>
+</div>
+
+<a class="home_button" href="{{ url_for('show_member')}}">Cancel</a>
+
+{% endblock %}

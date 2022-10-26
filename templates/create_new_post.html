@@ -1,0 +1,24 @@
+<link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+<header>
+  <div id="page_title">
+      <h2>Create a post</h2>
+  </div>
+</header>
+
+<div class="post">
+  <form method="POST" action="{{ url_for('create_post') }}">
+    <p class="form_text">Post Title: <input class="text_field" type="text" id="title" name="title" /><br/></p>
+    <p class="form_text">Post Theme: <input class="text_field" type="text" id="theme" name="theme" /><br/></p>
+    <p class="form_text"class="form_text">Post Date & Location: <input class="text_field" type="text" id="date_location" name="date_location"/><br /></p>
+    <p class="form_text center">Post Summary:<textarea class="text_field" type="text" id="summary" name="summary"></textarea></p>
+    <p>
+      <input class="delete_button" type="reset" value="Reset"/>
+      <input class="create_button" type="submit" name="post-btn" value="Create"/>
+    </p>
+  </form>
+</div>
+<a class="home_button" href="{{ url_for('show_post')}}">Return</a>

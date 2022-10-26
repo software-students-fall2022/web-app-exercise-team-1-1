@@ -3,14 +3,24 @@
 
 A little exercise to build a web application following an agile development process. See the [instructions](instructions.md) for more detail.
 
+## Member
+
+- David Adler: https://github.com/dov212
+- Iris Qian: https://github.com/okkiris
+- Wenni Fan: https://github.com/fwenni
+- Vincent Xu: https://github.com/yx-xyc
+
 ## Product vision statement
 
-See instructions. Delete this line and place the Product Vision Statement here.
+This application is designed for club e-board members to manage their club by organizing events, checking their members' participation, and connecting with other clubs.
 
 ## User stories
 
-See instructions. Delete this line and place a link to the user stories here.
+[issues](issues.md)
 
 ## Task boards
 
-See instructions. Delete this line and place a link to the task boards here.
+[task boards](https://github.com/software-students-fall2022/web-app-exercise-team-1-1/projects?query=is%3Aopen)
+
+## Regarding .env
+The .env file is available in this github repo. The database is admin and the password is secret.
